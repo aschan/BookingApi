@@ -1,5 +1,6 @@
 ﻿namespace ScandicCase.Services
 {
+	using System;
 	using System.Collections.Generic;
 	using System.Linq;
 
@@ -18,7 +19,17 @@
 
         public void AddGuestToBooking(int bookingId, Guest guest)
         {
-            // requeird objects should be controlled from front end no here 
+			// Required objects should be controlled from front end no here 
+
+			// No! It's a public method in a public class so anyone can call it. Assume everyone else are idiots and validate the input.
+			// If you did that you wouldn't get a NullReferenceException when posting without a body. It should probably be validated the controller
+			// as well but this is where the business logic resides so this is where you must be certain that the submitted parameters are valid.
+			if (bookingId <= 0)
+			{
+				throw new ArgumentOutOfRangeException(nameof(bookingId), "A valid booking Id must be greater than 0.");
+			}
+
+			var localGuest = guest ?? throw new ArgumentNullException(nameof(guest));
 
             var booking = RandomValues.FirstOrDefault(x => x.Id == bookingId);
             if (booking != null)
@@ -33,11 +44,11 @@
                 if (guestsNumberinBooking < roomSpace)
                 {
                     var NewBooking = new Guest
-                    {
-                        FirstName = guest.FirstName,
-                        LastName = guest.LastName,
-                        Title = guest.Title
-                    };
+					                     {
+					                         FirstName = localGuest.FirstName,
+					                         LastName = localGuest.LastName,
+					                         Title = localGuest.Title
+					                     };
                     booking.Guests.Add(NewBooking);
                 }
                 else
@@ -52,8 +63,13 @@
         }
 
         public Booking FetchBooking(int bookingId)
-        {
-            var booking = RandomValues.FirstOrDefault(x => x.Id == bookingId);
+		{
+			if (bookingId <= 0)
+			{
+				throw new ArgumentOutOfRangeException(nameof(bookingId), "A valid booking Id must be greater than 0.");
+			}
+
+			var booking = RandomValues.FirstOrDefault(x => x.Id == bookingId);
             if (booking != null)
             {
                 return booking;
