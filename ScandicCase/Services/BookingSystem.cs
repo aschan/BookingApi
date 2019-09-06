@@ -70,8 +70,6 @@
             return bookings;
         }
 
-		#region Private methods
-
 		private int GetRoomSpace(string roomType)
         {
             var roomSpace = 0;
@@ -160,7 +158,5 @@
                    RoomType = "TRIPLE"
                });
         }
-        
-		#endregion
     }
 }
