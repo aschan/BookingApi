@@ -1,23 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
-using ScandicCase.Interfaces;
-using ScandicCase.Services;
-using Microsoft.OpenApi.Models;
-using System.Reflection;
-using System.IO;
-
-
-namespace ScandicCase
+﻿namespace ScandicCase
 {
-    public class Startup
+	using System;
+
+	using Microsoft.AspNetCore.Builder;
+	using Microsoft.AspNetCore.Hosting;
+	using Microsoft.Extensions.Configuration;
+	using Microsoft.Extensions.DependencyInjection;
+	using Microsoft.OpenApi.Models;
+
+	using ScandicCase.Interfaces;
+	using ScandicCase.Services;
+
+	public class Startup
     {
         public Startup(IConfiguration configuration)
         {
@@ -30,10 +24,6 @@ namespace ScandicCase
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddSingleton<IBookingSystem, BookingSystem>();
-            //services.AddSwaggerGen(c =>
-            //{
-            //    c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
-            //});
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo
