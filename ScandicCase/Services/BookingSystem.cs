@@ -34,10 +34,6 @@
             var booking = RandomValues.FirstOrDefault(x => x.Id == bookingId);
             if (booking != null)
             {
-				// These two lines and the if further down ...
-                var roomSpace = GetNumberOfBeds(booking.RoomType);
-                var guestsNumberinBooking = booking.Guests.ToList().Count;
-
 				// If you move this to the Guest class (or maybe make an extension method if you can't modify the class) that validates the guest. Then you could write:
 				// if (!guest.IsValidInCountry(booking.Hotel.CountryCode)) { thrown new ValidationException("Title field is obligatory for guests at German hotels."); }
                 if (string.IsNullOrEmpty(guest.Title) && booking.Hotel.CountryCode == Country.DE)
@@ -45,9 +41,8 @@
                     throw new ValidationException("Title field is obligatory since the hotel is in germany");
                 }
 
-				// ... are all about the booked room so you could probably change GetNumberOfBeds toi GetAvailableBeds and put most of this code there.
-				// That way you would get an int between [0 - max beds] telling you how many extra guests can be added.
-                if (guestsNumberinBooking < roomSpace)
+                var availableBeds = GetAvailableBeds(booking);
+                if (availableBeds > 0)
                 {
                     var newBooking = new Guest
 					                     {
@@ -79,7 +74,15 @@
 			return booking ?? throw new NotFoundException($"Booking with id number {bookingId} Not found");
 		}
 
-        public IEnumerable<Booking> GetBookings()
+        private int GetAvailableBeds(Booking booking)
+        {
+	        var totalBedsInRoomType = GetNumberOfBeds(booking.RoomType);
+	        var occupiedBedsInRoom = booking.Guests.Count; // Since it is a list I don't need to do ToList() and if it was just an enumerable the linq method Count() would still work.
+
+	        return totalBedsInRoomType - occupiedBedsInRoom;
+        }
+
+		public IEnumerable<Booking> GetBookings()
         {
             var bookings = RandomValues.ToList();
             return bookings;
