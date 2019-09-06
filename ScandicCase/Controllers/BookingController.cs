@@ -1,19 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using ScandicCase.Interfaces;
-using ScandicCase.Models;
-
-namespace ScandicCase.Controllers
+﻿namespace ScandicCase.Controllers
 {
+	using System;
+	using System.Collections.Generic;
+	using Microsoft.AspNetCore.Mvc;
+	using ScandicCase.Interfaces;
+	using ScandicCase.Models;
+
     [Produces("application/json")]
     [Route("api/Booking")]
     public class BookingController : Controller
     {
         private IBookingSystem _service;
+
         public BookingController(IBookingSystem service)
         {
             _service = service;
