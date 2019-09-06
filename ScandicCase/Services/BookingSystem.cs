@@ -35,7 +35,7 @@
             if (booking != null)
             {
 				// These two lines and the if further down ...
-                var roomSpace = GetRoomSpace(booking.RoomType);
+                var roomSpace = GetNumberOfBeds(booking.RoomType);
                 var guestsNumberinBooking = booking.Guests.ToList().Count;
 
 				// If you move this to the Guest class (or maybe make an extension method if you can't modify the class) that validates the guest. Then you could write:
@@ -45,7 +45,7 @@
                     throw new ValidationException("Title field is obligatory since the hotel is in germany");
                 }
 
-				// ... are all about the booked room so you could probably change GetRoomSpace toi GetAvailableBeds and put most of this code there.
+				// ... are all about the booked room so you could probably change GetNumberOfBeds toi GetAvailableBeds and put most of this code there.
 				// That way you would get an int between [0 - max beds] telling you how many extra guests can be added.
                 if (guestsNumberinBooking < roomSpace)
                 {
@@ -59,12 +59,12 @@
                 }
                 else
                 {
-                    throw new ValidationException("here are unfortunately no place for this guest to stay , consider maybe another room ");
+                    throw new ValidationException("There are unfortunately no place for this guest to stay , consider maybe another room ");
                 }
             }
             else
             {
-                throw new NotFoundException($"Booking with id number {bookingId} Not found");
+                throw new NotFoundException($"Booking with id number {bookingId} was not found");
             }
         }
 
@@ -76,15 +76,8 @@
 			}
 
 			var booking = RandomValues.FirstOrDefault(x => x.Id == bookingId);
-            if (booking != null)
-            {
-                return booking;
-            }
-            else
-            {
-                throw new NotFoundException($"Booking with id number {bookingId} Not found");
-            }
-        }
+			return booking ?? throw new NotFoundException($"Booking with id number {bookingId} Not found");
+		}
 
         public IEnumerable<Booking> GetBookings()
         {
@@ -92,9 +85,9 @@
             return bookings;
         }
 
-		private int GetRoomSpace(string roomType)
+		private int GetNumberOfBeds(string roomType)
         {
-            var roomSpace = 0;
+            int roomSpace;
             switch (roomType)
             {
                 case "SINGLE":
