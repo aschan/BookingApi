@@ -1,19 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace ScandicCase.Exceptions
+﻿namespace ScandicCase.Exceptions
 {
+	using System;
+
     public class ValidationException : Exception
     {
+		// If you create a custom exception you should implement all three base constructors
+		// It is also good practice to override serialization methods
         public ValidationException(string s) : base(s)
-        {
-        }
-    }
-    public class NotFoundException : Exception
-    {
-        public NotFoundException(string s) : base(s)
         {
         }
     }
