@@ -1,15 +1,13 @@
-﻿using ScandicCase.Exceptions;
-using ScandicCase.Interfaces;
-using ScandicCase.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Threading.Tasks;
-
-namespace ScandicCase.Services
+﻿namespace ScandicCase.Services
 {
-    public class BookingSystem : IBookingSystem
+	using System.Collections.Generic;
+	using System.Linq;
+
+	using ScandicCase.Exceptions;
+	using ScandicCase.Interfaces;
+	using ScandicCase.Models;
+
+	public class BookingSystem : IBookingSystem
     {
         public static List<Booking> RandomValues;
 
@@ -65,13 +63,16 @@ namespace ScandicCase.Services
                 throw new NotFoundException($"Booking with id number {bookingId} Not found");
             }
         }
+
         public IEnumerable<Booking> GetBookings()
         {
             var bookings = RandomValues.ToList();
             return bookings;
         }
-        #region Private methods
-        private int GetRoomSpace(string roomType)
+
+		#region Private methods
+
+		private int GetRoomSpace(string roomType)
         {
             var roomSpace = 0;
             switch (roomType)
@@ -92,7 +93,8 @@ namespace ScandicCase.Services
             }
             return roomSpace;
         }
-        private void PopulateSomeValue()
+
+		private void PopulateSomeValue()
         {
             var _HotelDanmark = new Hotel()
             {
@@ -158,7 +160,7 @@ namespace ScandicCase.Services
                    RoomType = "TRIPLE"
                });
         }
-        #endregion
-
+        
+		#endregion
     }
 }

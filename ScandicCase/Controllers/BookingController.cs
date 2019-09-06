@@ -2,7 +2,9 @@
 {
 	using System;
 	using System.Collections.Generic;
+
 	using Microsoft.AspNetCore.Mvc;
+
 	using ScandicCase.Interfaces;
 	using ScandicCase.Models;
 
@@ -57,6 +59,5 @@
                 return BadRequest(e.Message);
             }
         }
-
     }
 }
