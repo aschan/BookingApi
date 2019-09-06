@@ -88,7 +88,7 @@
 		private int GetNumberOfBeds(string roomType)
         {
             int roomSpace;
-            switch (roomType)
+            switch (roomType.ToUpperInvariant())
             {
                 case "SINGLE":
                     roomSpace = 1;
