@@ -19,7 +19,7 @@
 
         // GET: api/Booking
         [HttpGet]
-        public IEnumerable<Booking> Get()
+        public IEnumerable<Booking> GetBookings()
         {
             // a test method to get some fake data 
             var bookings = _service.GetBookings();
@@ -29,7 +29,7 @@
         // GET: api/Booking/{id}
         [HttpGet]
         [Route("{id}")]
-        public IActionResult GetById(int id)
+        public IActionResult GetBookingById(int id)
         {
             try
             {
