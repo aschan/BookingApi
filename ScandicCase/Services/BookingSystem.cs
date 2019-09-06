@@ -20,7 +20,7 @@
         {
             // requeird objects should be controlled from front end no here 
 
-            var booking = RandomValues.Where(x => x.Id == bookingId).FirstOrDefault();
+            var booking = RandomValues.FirstOrDefault(x => x.Id == bookingId);
             if (booking != null)
             {
                 var roomSpace = GetRoomSpace(booking.RoomType);
@@ -53,7 +53,7 @@
 
         public Booking FetchBooking(int bookingId)
         {
-            var booking = RandomValues.Where(x => x.Id == bookingId).FirstOrDefault();
+            var booking = RandomValues.FirstOrDefault(x => x.Id == bookingId);
             if (booking != null)
             {
                 return booking;
