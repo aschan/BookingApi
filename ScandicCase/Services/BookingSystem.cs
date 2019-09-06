@@ -8,7 +8,8 @@
 	using ScandicCase.Interfaces;
 	using ScandicCase.Models;
 
-	public class BookingSystem : IBookingSystem
+	// This is where your problems begins. The IBookingSystem was the exposed functionality from the underlying system you should consume, not the interface you should implement.
+	public class BookingSystem : IBookingSystem 
     {
         public static List<Booking> RandomValues;
 
