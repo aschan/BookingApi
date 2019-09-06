@@ -19,11 +19,6 @@
 
         public void AddGuestToBooking(int bookingId, Guest guest)
         {
-			// Required objects should be controlled from front end no here 
-
-			// No! It's a public method in a public class so anyone can call it. Assume everyone else are idiots and validate the input.
-			// If you did that you wouldn't get a NullReferenceException when posting without a body. It should probably be validated the controller
-			// as well but this is where the business logic resides so this is where you must be certain that the submitted parameters are valid.
 			if (bookingId <= 0)
 			{
 				throw new ArgumentOutOfRangeException(nameof(bookingId), "A valid booking Id must be greater than 0.");
@@ -52,7 +47,7 @@
                 }
                 else
                 {
-                    throw new ValidationException("There are unfortunately no place for this guest to stay , consider maybe another room ");
+                    throw new ValidationException("There are unfortunately no available beds left in this room, consider booking an additional room.");
                 }
             }
             else
