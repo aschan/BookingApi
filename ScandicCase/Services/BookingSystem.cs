@@ -34,6 +34,7 @@
             var booking = RandomValues.FirstOrDefault(x => x.Id == bookingId);
             if (booking != null)
             {
+				// These two lines and the if further down ...
                 var roomSpace = GetRoomSpace(booking.RoomType);
                 var guestsNumberinBooking = booking.Guests.ToList().Count;
 
@@ -41,6 +42,9 @@
                 {
                     throw new ValidationException("Title field is obligatory since the hotel is in germany");
                 }
+
+				// ... are all about the booked room so you could probably change GetRoomSpace toi GetAvailableBeds and put most of this code there.
+				// That way you would get an int between [0 - max beds] telling you how many extra guests can be added.
                 if (guestsNumberinBooking < roomSpace)
                 {
                     var NewBooking = new Guest
