@@ -38,6 +38,8 @@
                 var roomSpace = GetRoomSpace(booking.RoomType);
                 var guestsNumberinBooking = booking.Guests.ToList().Count;
 
+				// If you move this to the Guest class (or maybe make an extension method if you can't modify the class) that validates the guest. Then you could write:
+				// if (!guest.IsValidInCountry(booking.Hotel.CountryCode)) { thrown new ValidationException("Title field is obligatory for guests at German hotels."); }
                 if (string.IsNullOrEmpty(guest.Title) && booking.Hotel.CountryCode == Country.DE)
                 {
                     throw new ValidationException("Title field is obligatory since the hotel is in germany");
