@@ -49,17 +49,17 @@
 				// That way you would get an int between [0 - max beds] telling you how many extra guests can be added.
                 if (guestsNumberinBooking < roomSpace)
                 {
-                    var NewBooking = new Guest
+                    var newBooking = new Guest
 					                     {
 					                         FirstName = localGuest.FirstName,
 					                         LastName = localGuest.LastName,
 					                         Title = localGuest.Title
 					                     };
-                    booking.Guests.Add(NewBooking);
+                    booking.Guests.Add(newBooking);
                 }
                 else
                 {
-                    throw new ValidationException("here are unfortunetlly no place for this guest to stay , consider maybe another room ");
+                    throw new ValidationException("here are unfortunately no place for this guest to stay , consider maybe another room ");
                 }
             }
             else
