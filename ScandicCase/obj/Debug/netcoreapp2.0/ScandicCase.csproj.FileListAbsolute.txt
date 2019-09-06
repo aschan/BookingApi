@@ -1,0 +1,11 @@
+C:\Users\abdallah.rifai\source\repos\ScandicCase\ScandicCase\bin\Debug\netcoreapp2.0\ScandicCase.deps.json
+C:\Users\abdallah.rifai\source\repos\ScandicCase\ScandicCase\bin\Debug\netcoreapp2.0\ScandicCase.runtimeconfig.json
+C:\Users\abdallah.rifai\source\repos\ScandicCase\ScandicCase\bin\Debug\netcoreapp2.0\ScandicCase.runtimeconfig.dev.json
+C:\Users\abdallah.rifai\source\repos\ScandicCase\ScandicCase\bin\Debug\netcoreapp2.0\ScandicCase.dll
+C:\Users\abdallah.rifai\source\repos\ScandicCase\ScandicCase\bin\Debug\netcoreapp2.0\ScandicCase.pdb
+C:\Users\abdallah.rifai\source\repos\ScandicCase\ScandicCase\obj\Debug\netcoreapp2.0\ScandicCase.csproj.CoreCompileInputs.cache
+C:\Users\abdallah.rifai\source\repos\ScandicCase\ScandicCase\obj\Debug\netcoreapp2.0\ScandicCase.AssemblyInfoInputs.cache
+C:\Users\abdallah.rifai\source\repos\ScandicCase\ScandicCase\obj\Debug\netcoreapp2.0\ScandicCase.AssemblyInfo.cs
+C:\Users\abdallah.rifai\source\repos\ScandicCase\ScandicCase\obj\Debug\netcoreapp2.0\ScandicCase.dll
+C:\Users\abdallah.rifai\source\repos\ScandicCase\ScandicCase\obj\Debug\netcoreapp2.0\ScandicCase.pdb
+C:\Users\abdallah.rifai\source\repos\ScandicCase\ScandicCase\obj\Debug\netcoreapp2.0\ScandicCase.csprojAssemblyReference.cache
